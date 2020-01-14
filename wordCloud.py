@@ -4,6 +4,7 @@ from wordcloud import WordCloud, STOPWORDS
 import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
+import matplotlib.image as img
 
 # %matplotlib inline
 matplotlib.rcParams['figure.figsize'] = (16.0, 9.0)
@@ -31,12 +32,12 @@ dataset = open("batman.txt", "r").read()
 def create_word_cloud(string):
    maskArray = np.array(Image.open("test.jpg"))
    # cloud = WordCloud(background_color = "black", min_font_size=5, mask = maskArray, stopwords = set(STOPWORDS))
-   cloud = WordCloud(font_path=None, width=400, height=200, margin=2, ranks_only=None, prefer_horizontal=0.9, mask=None, scale=1, color_func=None, max_words=200, min_font_size=4, stopwords=None, random_state=None, background_color='black', max_font_size=None, font_step=1, mode='RGB', relative_scaling='auto', regexp=None, collocations=True, colormap=None, normalize_plurals=True, contour_width=0, contour_color='black', repeat=False, include_numbers=False, min_word_length=0)
+   cloud = WordCloud(font_path=None, width=400, height=200, margin=2, ranks_only=None, prefer_horizontal=0.9, mask=None, scale=1, color_func=None, max_words=200, min_font_size=4, stopwords=set(STOPWORDS), random_state=None, background_color='black', max_font_size=None, font_step=1, mode='RGB', relative_scaling='auto', regexp=None, collocations=True, colormap=None, normalize_plurals=True, contour_width=0, contour_color='black', repeat=False, include_numbers=False, min_word_length=0)
    cloud.generate(string)
    cloud.to_file("wordCloud.png")
-   plt.plot()
-   plt.imshow(cloud)
 
 
-dataset = dataset.lower()
+# dataset = dataset.lower()
 create_word_cloud(dataset)
+# im = img.imread("wordCloud.png")
+# plt.imshow(im)
